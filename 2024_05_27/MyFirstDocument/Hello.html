@@ -6,9 +6,34 @@
 </head>
 <body>
 <header>
-    <h1>My book about ai</h1>
+    <h1>Hello</h1>
 </header>
-<header> <h2>Education only</h2></header>
-<footer> &copy; IT Step 2024</footer>
+<header> <h2></h2></header>
+<footer> </footer>
 </body>
+<script>
+    //Task 1
+    let userName = prompt("Enter name:");
+    if (userName)
+    {
+        alert("Hello, " + userName + "!");
+    }
+   //task2
+    const currentYear = 2024;
+    const birthYear = prompt("Введіть рік свого народження:");
+    const age = currentYear - birthYear;
+    console.log(`Вам ${age} років.`);
+    //task3
+    let sideLength = parseFloat(prompt("Введіть довжину сторони квадрата:"));
+    let perimeter = 4 * sideLength;
+    alert("Периметр квадрата: " + perimeter);
+    //Task4
+    let radius = parseFloat(prompt("Введіть радіус окружності:"));
+    let area = Math.PI * Math.pow(radius, 2);
+    alert("Площа окружності: " + area);
+
+
+
+</script>
+
 </html>
