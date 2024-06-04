@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //task1
+    let age = prompt("Введите ваш возраст:");
+    if (age >= 0 && age <= 2) {
+        console.log("Вы ребенок");
+    } else if (age >= 12 && age <= 18) {
+        console.log("Вы подросток");
+    } else if (age > 18 && age <= 60) {
+        console.log("Вы взрослый");
+    } else {
+        console.log("Вы пенсионер");
+    }
+//task2
+    let number = prompt("Введите число от 0 до 9:");
+    switch (number) {
+        case "1":
+            console.log("!");
+            break;
+        case "2":
+            console.log("@");
+            break;
+        // Добавьте остальные кейсы для остальных чисел
+        default:
+            console.log("Некорректное число");
+    }
+//task3
+    let threeDigitNumber = prompt("Введите трехзначное число:");
+    let digits = threeDigitNumber.split("").map(Number);
+    if (digits[0] === digits[1] || digits[1] === digits[2] || digits[0] === digits[2]) {
+        console.log("В числе есть одинаковые цифры");
+    } else {
+        console.log("В числе нет одинаковых цифр");
+    }
+//task4
+    let year = prompt("Введите год:");
+    if ((year % 400 === 0) || (year % 4 === 0 && year % 100 !== 0)) {
+        console.log("Год високосный");
+    } else {
+        console.log("Год не високосный");
+    }
+//task5
+    let fiveDigitNumber = prompt("Введите пятиразрядное число:");
+    if (fiveDigitNumber.length !== 5) {
+        console.log("Введите пятиразрядное число");
+    } else if (fiveDigitNumber === fiveDigitNumber.split("").reverse().join("")) {
+        console.log("Число является палиндромом");
+    } else {
+        console.log("Число не является палиндромом");
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
