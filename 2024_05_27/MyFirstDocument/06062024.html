@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // створення масиву покупок
+    let shoppingList = [
+        { name: "Молоко", quantity: 2, bought: false },
+        { name: "Хліб", quantity: 1, bought: true },
+        { name: "Яйця", quantity: 10, bought: false }
+    ];
+
+    // вивід на екран
+    function displayList(list) {
+        let notBought = list.filter(item => !item.bought);
+        let bought = list.filter(item => item.bought);
+
+        console.log("Не куплені продукти:");
+        notBought.forEach(item => console.log(`${item.name}: ${item.quantity}`));
+
+        console.log("Куплені продукти:");
+        bought.forEach(item => console.log(`${item.name}: ${item.quantity}`));
+    }
+
+    // додавання в список
+    function addProduct(list, product) {
+        let existingProduct = list.find(item => item.name === product.name);
+
+        if (existingProduct) {
+            existingProduct.quantity += product.quantity;
+        } else {
+            list.push(product);
+        }
+    }
+
+    // позначення як купленого
+    function buyProduct(list, productName) {
+        let product = list.find(item => item.name === productName);
+
+        if (product) {
+            product.bought = true;
+        } else {
+            console.log("Продукт не знайдено в списку.");
+        }
+    }
+
+    // приклад застосування
+
+    // вивілд на екран
+    displayList(shoppingList);
+
+    // додавання
+    addProduct(shoppingList, { name: "Сир", quantity: 1, bought: false });
+    addProduct(shoppingList, { name: "Молоко", quantity: 1, bought: false }); // Збільшення кількості молока
+
+    // вивід після додавання
+    displayList(shoppingList);
+
+    // позначенння як купленого
+    buyProduct(shoppingList, "Яйця");
+
+    // вивід після купленого
+    displayList(shoppingList);
+
+</script>
+
+</body>
+</html>
