@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Task2
+
+    function Fraction(numerator, denominator) {
+        this.numerator = numerator;
+        this.denominator = denominator;
+    }
+
+    // находження найбільшого спільного дільника
+    function gcd(a, b) {
+        while (b !== 0) {
+            let t = b;
+            b = a % b;
+            a = t;
+        }
+        return a;
+    }
+
+    //скорпочення
+    Fraction.prototype.reduce = function() {
+        let divisor = gcd(this.numerator, this.denominator);
+        this.numerator /= divisor;
+        this.denominator /= divisor;
+        return this;
+    };
+
+    //додавання
+    Fraction.prototype.add = function(fraction) {
+        let newNumerator = this.numerator * fraction.denominator + fraction.numerator * this.denominator;
+        let newDenominator = this.denominator * fraction.denominator;
+        return new Fraction(newNumerator, newDenominator).reduce();
+    };
+
+    // віднімання
+    Fraction.prototype.subtract = function(fraction) {
+        let newNumerator = this.numerator * fraction.denominator - fraction.numerator * this.denominator;
+        let newDenominator = this.denominator * fraction.denominator;
+        return new Fraction(newNumerator, newDenominator).reduce();
+    };
+
+    // множення
+    Fraction.prototype.multiply = function(fraction) {
+        let newNumerator = this.numerator * fraction.numerator;
+        let newDenominator = this.denominator * fraction.denominator;
+        return new Fraction(newNumerator, newDenominator).reduce();
+    };
+
+    //ділення
+    Fraction.prototype.divide = function(fraction) {
+        let newNumerator = this.numerator * fraction.denominator;
+        let newDenominator = this.denominator * fraction.numerator;
+        return new Fraction(newNumerator, newDenominator).reduce();
+    };
+
+    // приклад роботи функцій
+    let frac1 = new Fraction(1, 2);
+    let frac2 = new Fraction(3, 4);
+
+    let sum = frac1.add(frac2);
+    console.log(`Сума: ${sum.numerator}/${sum.denominator}`);
+
+    let difference = frac1.subtract(frac2);
+    console.log(`Різниця: ${difference.numerator}/${difference.denominator}`);
+
+    let product = frac1.multiply(frac2);
+    console.log(`Добуток: ${product.numerator}/${product.denominator}`);
+
+    let quotient = frac1.divide(frac2);
+    console.log(`Частка: ${quotient.numerator}/${quotient.denominator}`);
+
+
+</script>
+
+</body>
+</html>
