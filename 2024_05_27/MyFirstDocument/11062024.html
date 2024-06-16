@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // tasks.js
+    const randomTaskExecution = () => {
+        return new Promise((resolve, reject) => {
+            const shouldExecute = Math.random() > 0.5;
+
+            if (shouldExecute) {
+                // Імітація асинхронної операції з використанням setTimeout
+                setTimeout(() => {
+                    resolve("Завдання виконане успішно");
+                }, Math.random() * 2000);
+            } else {
+                // Імітація не виконання завдання
+                reject("Завдання не виконане");
+            }
+        });
+    };
+
+    // Функція для запуску завдань
+    const executeTasks = async (taskCount) => {
+        for (let i = 1; i <= taskCount; i++) {
+            try {
+                const result = await randomTaskExecution();
+                console.log(`Завдання ${i}: ${result}`);
+            } catch (error) {
+                console.log(`Завдання ${i}: ${error}`);
+            }
+        }
+    };
+
+    // Запуск 5 завдань
+    executeTasks(5);
+
+
+</script>
+
+</body>
+</html>
